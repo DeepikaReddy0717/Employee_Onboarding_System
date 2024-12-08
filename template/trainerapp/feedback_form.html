@@ -1,0 +1,136 @@
+{% extends 'Navbar/Trainernavbar.html' %}
+<html lang="en">
+{% load static %}
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Give Feedback</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9faff;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Ensure body takes full viewport height */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Space out the navbar and content */
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            color: #0056b3; /* Blue tone */
+            margin-bottom: 20px;
+        }
+
+        /* Form Container Styling */
+        .form-container {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto; /* Ensures spacing from the top and centers */
+            flex-grow: 1; /* Allow the container to grow and fill space */
+        }
+
+        /* Back Button Styling */
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #0056b3;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .back-button:hover {
+            background-color: #004494;
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 16px;
+            color: #333;
+            margin: 10px 0 5px;
+        }
+
+        input, textarea, select, button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            background: linear-gradient(90deg, #0056b3, #003d8f);
+            color: #ffffff;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        button:hover {
+            background-color: #004494;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 24px;
+            }
+
+            input, textarea, select, button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Form Container -->
+    <div class="form-container">
+        <h2>Give Feedback</h2>
+
+        <!-- Back Button -->
+        <a href="{% url 'trainerapp:TrainerHomePage' %}" class="back-button">Back</a>
+
+        <!-- Feedback Form -->
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+</body>
+{% endblock %}
+</html>

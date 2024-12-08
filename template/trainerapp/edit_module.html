@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'Navbar/Trainernavbar.html' %}
+{% block body %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="mb-4">Edit Module</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if modules %}
+    {% for module in modules %}
+        <li>
+            <a href="{% url 'trainerapp:edit_module' module.id %}" class="btn btn-warning">
+                Edit {{ module.name }}
+            </a>
+        </li>
+    {% endfor %}
+{% else %}
+    <li>No modules available to edit.</li>
+{% endif %}
+
+        <button type="submit" class="btn btn-primary">Update Module</button>
+        <a href="{% url 'trainer:course_detail' module.course.id %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}
+
+</body>
+</html>

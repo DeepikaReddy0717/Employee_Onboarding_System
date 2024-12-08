@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'Navbar/UserNavbar.html' %}
+
+{% block body %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="content-container">
+    <h2>User Dashboard</h2>
+
+    <h3>Available Modules</h3>
+    {% for module in modules %}
+        <div>
+            <h4>{{ module.name }}</h4>
+            <a href="{% url 'userapp:start_training' module.id %}" class="btn btn-primary">Start Training</a>
+        </div>
+    {% empty %}
+        <p>No modules available.</p>
+    {% endfor %}
+</div>
+{% endblock %}
+
+</body>
+</html>

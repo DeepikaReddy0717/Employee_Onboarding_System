@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends 'Navbar/Trainernavbar.html' %}
+{% block body %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Add Module</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% for course in courses %}
+    <li>
+        <a class="dropdown-item" href="{% url 'trainerapp:add_module' course.id %}">
+            Add Module for {{ course.title }}
+        </a>
+    </li>
+{% endfor %}
+
+        <button type="submit" class="btn btn-primary">Save Module</button>
+        <a href="{% url 'trainer:course_detail' course.id %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}
+</body>
+</html>

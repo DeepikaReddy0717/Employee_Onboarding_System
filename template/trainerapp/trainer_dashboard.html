@@ -1,0 +1,31 @@
+{% extends 'Navbar/TrainerNavbar.html' %}
+
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="content-container">
+    <h2>Trainer Dashboard</h2>
+
+    <h3>Courses</h3>
+    {% for course in courses %}
+        <div>
+            <h4>{{ course.title }}</h4>
+            <a href="{% url 'trainerapp:add_module' course.id %}" class="btn btn-primary">Add Module</a>
+            <ul>
+                {% for module in course.modules.all %}
+                    <li>{{ module.name }} - <a href="{% url 'trainerapp:edit_module' module.id %}">Edit</a></li>
+                {% empty %}
+                    <li>No modules available for this course.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+</body>
+</html>

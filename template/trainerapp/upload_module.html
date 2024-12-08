@@ -1,0 +1,126 @@
+{% extends 'Navbar/Trainernavbar.html' %}
+
+<html lang="en">
+{% load static %}
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Module</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        label {
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        input[type="text"],
+        textarea,
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+            color: #333;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        button {
+            padding: 14px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+        }
+
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Course Module</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="title">Module Title:</label>
+            <input type="text" name="title" id="title" placeholder="Enter module title" required><br>
+
+            <label for="content">Module Content:</label>
+            <textarea name="content" id="content" placeholder="Enter the content of the module" required></textarea><br>
+
+            <label for="duration">Duration (minutes):</label>
+            <input type="number" name="duration" id="duration" placeholder="Enter duration in minutes" required><br>
+
+            <button type="submit">Upload Module</button>
+        </form>
+        
+        <div class="footer">
+            <p>&copy; 2024 Your Company. <a href="#">Privacy Policy</a></p>
+        </div>
+    </div>
+
+    <div class="error-message">
+        <!-- Error messages will go here -->
+    </div>
+</body>
+{% endblock %}
+</html>

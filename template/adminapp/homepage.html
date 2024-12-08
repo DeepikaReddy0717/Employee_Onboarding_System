@@ -1,0 +1,494 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training & Onboarding System</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .hero {
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .hero .cta {
+            margin-top: 20px;
+        }
+         .small-modal {
+            background-color: white;
+            margin: 20% auto;
+            padding: 15px;
+            border: 1px solid #888;
+            width: 40%;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .cta button {
+            padding: 15px 30px;
+            font-size: 1em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .cta button:hover {
+            background-color: #45a049;
+        }
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px 20px;
+            background-color: #f9f9f9;
+        }
+        .features div {
+            text-align: center;
+        }
+        .features h3 {
+            margin-bottom: 10px;
+        }
+        .announcements {
+            padding: 50px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+        .announcements h2 {
+            margin-bottom: 20px;
+        }
+        .quick-links {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel-inner {
+            display: flex;
+            width: 200%;
+            animation: roll 15s linear infinite;
+        }
+
+        .carousel-item {
+            width: 50%;
+            flex-shrink: 0;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @keyframes roll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 60%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .modal-header {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .modal-footer {
+            margin-top: 20px;
+        }
+
+        .modal-footer button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .modal-footer button:hover {
+            background-color: #45a049;
+        }
+
+        .modal-close {
+            float: right;
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Training & Onboarding System</h1>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#" onclick="openTrainingModal()">Training Programs</a>
+    <a href="#" onclick="openOnboardingModal()">Onboarding</a>
+    <a href="{% url 'trainerapp:chatbot' %}">Support</a>
+    <a href="#" onclick="openModal()">About Us</a>
+</nav>
+
+<section class="hero">
+    <h1>Welcome to the Training & Onboarding System</h1>
+    <p>Empowering you with the tools and knowledge to succeed from day one</p>
+    <div class="cta">
+        <button onclick="window.location.href={% url 'adminapp:UserRegisterPageCall' %}">Get Started</button>
+        <button onclick="window.location.href={% url 'adminapp:UserLoginLogic' %}">Sign In</button>
+    </div>
+</section>
+<div id="trainingModal" class="modal">
+    <div class="small-modal">
+        <span class="modal-close" onclick="closeTrainingModal()">&times;</span>
+        <div class="modal-header">Training Programs</div>
+        <p>
+            Explore our **Training Programs** designed to upskill and empower you for success.
+        </p>
+        <p><strong>Available Programs:</strong></p>
+        <ul style="text-align: left; list-style-type: square; padding-left: 20px;">
+            <li>Leadership and Management Training</li>
+            <li>Technical Skills Development</li>
+            <li>Soft Skills Enhancement</li>
+            <li>Compliance and Safety Workshops</li>
+        </ul>
+        <p>Join a program today and take your career to the next level!</p>
+        <div class="modal-footer">
+            <button onclick="closeTrainingModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTrainingModal() {
+        document.getElementById("trainingModal").style.display = "block";
+    }
+    function closeTrainingModal() {
+        document.getElementById("trainingModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        const trainingModal = document.getElementById("trainingModal");
+        if (event.target == trainingModal) {
+            trainingModal.style.display = "none";
+        }
+    };
+</script>
+<div id="aboutModal" class="modal">
+    <div class="small-modal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <div class="modal-header">About Us</div>
+        <p>
+            Welcome to the **Training & Onboarding System**, your ultimate solution for empowering employees and organizations.
+        </p>
+        <p><strong>Our Vision:</strong> To build a collaborative, innovative, and knowledge-driven workplace.</p>
+        <p><strong>Core Features:</strong></p>
+        <ul style="text-align: left; list-style-type: square; padding-left: 20px;">
+            <li>Interactive training modules.</li>
+            <li>Customized onboarding processes.</li>
+            <li>Progress tracking and insights.</li>
+            <li>Secure platform accessible anytime.</li>
+        </ul>
+        <div class="modal-footer">
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openModal() {
+        document.getElementById("aboutModal").style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById("aboutModal").style.display = "none";
+    }
+
+    // Close modal if clicked outside
+    window.onclick = function(event) {
+        const modal = document.getElementById("aboutModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+</script>
+
+<div id="onboardingModal" class="modal">
+    <div class="small-modal">
+        <span class="modal-close" onclick="closeOnboardingModal()">&times;</span>
+        <div class="modal-header">Onboarding</div>
+        <p>
+            Welcome to the **Onboarding Experience** at our Training & Onboarding System.
+        </p>
+        <p><strong>What to Expect:</strong></p>
+        <ul style="text-align: left; list-style-type: square; padding-left: 20px;">
+            <li>A smooth and engaging introduction to your role.</li>
+            <li>Step-by-step guidance through company policies.</li>
+            <li>Access to training resources and team directories.</li>
+            <li>Interactive modules to familiarize yourself with our platform.</li>
+        </ul>
+        <p>Start your onboarding journey and become a valued member of our team!</p>
+        <div class="modal-footer">
+            <button onclick="closeOnboardingModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openOnboardingModal() {
+        document.getElementById("onboardingModal").style.display = "block";
+    }
+
+    function closeOnboardingModal() {
+        document.getElementById("onboardingModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        const onboardingModal = document.getElementById("onboardingModal");
+        if (event.target == onboardingModal) {
+            onboardingModal.style.display = "none";
+        }
+    };
+</script>
+
+<div id="upcomingModal" class="modal">
+    <div class="small-modal">
+        <span class="modal-close" onclick="closeUpcomingModal()">&times;</span>
+        <div class="modal-header">Upcoming Training Sessions</div>
+        <p>
+            Stay updated with our **Upcoming Training Sessions** and mark your calendars!
+        </p>
+        <p><strong>Next Sessions:</strong></p>
+        <ul style="text-align: left; list-style-type: square; padding-left: 20px;">
+            <li>Advanced Leadership Workshop - [Date: 12-12-2024]</li>
+            <li>Data Analytics Bootcamp - [Date: 15-12-2024]</li>
+            <li>Soft Skills Webinar - [Date: 18-12-2024]</li>
+            <li>Cybersecurity Awareness Session - [Date: 20-12-2024]</li>
+        </ul>
+        <p>Register now to reserve your spot!</p>
+        <div class="modal-footer">
+            <button onclick="closeUpcomingModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openUpcomingModal() {
+        document.getElementById("upcomingModal").style.display = "block";
+    }
+
+    function closeUpcomingModal() {
+        document.getElementById("upcomingModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        const upcomingModal = document.getElementById("upcomingModal");
+        if (event.target == upcomingModal) {
+            upcomingModal.style.display = "none";
+        }
+    };
+</script>
+<div id="coursesModal" class="modal">
+    <div class="small-modal">
+        <span class="modal-close" onclick="closeCoursesModal()">&times;</span>
+        <div class="modal-header">My Courses</div>
+        <p>
+            Access your enrolled courses and track your progress.
+        </p>
+        <p><strong>Current Courses:</strong></p>
+        <ul style="text-align: left; list-style-type: square; padding-left: 20px;">
+            <li>Leadership Essentials</li>
+            <li>Advanced Data Analytics</li>
+            <li>Effective Communication Skills</li>
+            <li>Project Management Fundamentals</li>
+        </ul>
+        <div class="modal-footer">
+            <button onclick="closeCoursesModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openCoursesModal() {
+        document.getElementById("coursesModal").style.display = "block";
+    }
+
+    function closeCoursesModal() {
+        document.getElementById("coursesModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        const coursesModal = document.getElementById("coursesModal");
+        if (event.target == coursesModal) {
+            coursesModal.style.display = "none";
+        }
+    };
+</script>
+<div id="directoryModal" class="modal">
+    <div class="small-modal">
+        <span class="modal-close" onclick="closeDirectoryModal()">&times;</span>
+        <div class="modal-header">Team Directory</div>
+        <p>
+            View your organization's team directory and connect with your colleagues.
+        </p>
+        <p><strong>Team Members:</strong></p>
+        <ul style="text-align: left; list-style-type: square; padding-left: 20px;">
+            <li>John Doe - Project Manager</li>
+            <li>Jane Smith - Data Analyst</li>
+            <li>Emily Johnson - HR Specialist</li>
+            <li>Michael Brown - Software Developer</li>
+        </ul>
+        <div class="modal-footer">
+            <button onclick="closeDirectoryModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openDirectoryModal() {
+        document.getElementById("directoryModal").style.display = "block";
+    }
+
+    function closeDirectoryModal() {
+        document.getElementById("directoryModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        const directoryModal = document.getElementById("directoryModal");
+        if (event.target == directoryModal) {
+            directoryModal.style.display = "none";
+        }
+    };
+</script>
+
+<div class="carousel-container">
+    <div class="carousel-inner">
+        <div class="carousel-item">
+            <img src="{% static 'image/i1.png' %}" alt="Image 1">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'image/i2.png' %}" alt="Image 2">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'image/i3.png' %}" alt="Image 3">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'image/i1.png' %}" alt="Image 1">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'image/i2.png' %}" alt="Image 2">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'image/i3.png' %}" alt="Image 3">
+        </div>
+    </div>
+</div>
+
+<section class="announcements">
+    <h2>Recent Announcements</h2>
+    <p>New: Advanced Leadership Course Available!</p>
+    <p>Orientation for new hires on [10-10-2024]</p>
+</section>
+
+<section class="quick-links">
+    <div>
+        <a href="#" onclick="openUpcomingModal()">Upcoming Training Sessions</a>
+    </div>
+    <div>
+        <a href="#" onclick="openCoursesModal()">My Courses</a>
+    </div>
+    <div>
+    <a href="https://kluniversityin-my.sharepoint.com/:b:/g/personal/2300031389_kluniversity_in/EfNkANlp6DBKtu8WiCNRTOcBGR2QiLUrRVnytT-j0bIreA?e=JJdU98" target="_blank">
+    Employee Handbook
+    </a>
+    </div>
+    <div>
+         <a href="#" onclick="openDirectoryModal()">Team Directory</a>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Training & Onboarding System. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

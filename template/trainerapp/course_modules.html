@@ -1,0 +1,135 @@
+{% extends 'Navbar/Trainernavbar.html' %}
+
+<html lang="en">
+{% load static %}
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Modules</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #555;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+        }
+
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ course.title }} Modules</h1>
+        <p>Progress: {{ progress.progress_percentage }}%</p>
+
+        <ul>
+            {% for module in modules %}
+                <li>
+                    <h2>{{ module.title }}</h2>
+                    <p>{{ module.content }}</p>
+                    <button onclick="completeModule({{ module.id }})">Mark as Completed</button>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script>
+        function completeModule(moduleId) {
+            fetch("", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": "{{ csrf_token }}",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ module_id: moduleId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Module marked as completed! Progress: " + data.progress + "%");
+                    location.reload();
+                }
+            });
+        }
+    </script>
+
+    <div class="footer">
+        <p>&copy; 2024 Your Company. <a href="#">Privacy Policy</a></p>
+    </div>
+</body>
+{% endblock %}
+</html>

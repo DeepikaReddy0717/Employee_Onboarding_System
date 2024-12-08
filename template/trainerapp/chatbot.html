@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Assistant</title>
+</head>
+<body>
+    <h2>Chat with our Assistant</h2>
+    <!-- This is where the Botpress Webchat will appear -->
+    <div id="bp-webchat"></div>
+
+    <!-- Botpress Webchat Integration -->
+    <script src="http://localhost:3000/assets/modules/channel-web/webchat.js"></script>
+    <script>
+        window.botpressWebChat.init({
+            host: 'http://localhost:3000', // Your Botpress server URL
+            botId: 'your-bot-id', // Replace with your Botpress bot's ID
+            messagingUrl: '/webchat',  // The URL for handling messages
+            showPoweredBy: false // Optionally, hide "Powered by Botpress" logo
+        });
+    </script>
+</body>
+</html>
