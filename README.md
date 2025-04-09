@@ -75,18 +75,26 @@ This system is designed to streamline employee training, assessments, and progre
 
 ## 📌 How to Run the Project Locally
 
-###  Step 1: Clone the Repository
 ```bash
+# Clone the repository
 git clone https://github.com/DeepikaReddy0717/Hackthon.git
 cd Hackthon
-###  Step 2: Create a Virtual Environment and Activate It
-'''bash
+
+# Create a virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-###  Step 3:Install Dependencies
+
+# Activate the virtual environment
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
-###  Step 4: Run Migrations and Start the Server
+
+# Run database migrations
 python manage.py migrate
+
+# Start the development server
 python manage.py runserver
-###  Step 5:  Open in Your Browser
-http://127.0.0.1:8000/
+
+# Open in browser
+# Visit: http://127.0.0.1:8000/
+
