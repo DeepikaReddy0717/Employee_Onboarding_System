@@ -75,14 +75,14 @@ This system is designed to streamline employee training, assessments, and progre
 
 ## 🙏 Acknowledgements
 
-This project was developed as part of the **23CS05EF - Python Full Stack Development with Django (Learnathon)**.
+This project was developed collaboratively as part of the **23CS05EF - Python Full Stack Development with Django **.
 
-Special thanks to:
+We would like to thank:
 
-- The course mentors and instructors for guidance and support  
-- Django and Python communities for open-source documentation  
-- GitHub for providing the platform to showcase this project  
-
+- 💻 Our amazing **team members** for their dedication, teamwork, and contributions across all modules  
+- 📚 Various **online communities, tutorials, and documentation** that provided guidance throughout the development  
+- 👨‍🏫 The course instructors and mentors for their constant support and encouragement  
+- 🌐 Open-source tools and frameworks that made this project possible 
 
 ## 📌 How to Run the Project Locally
 
