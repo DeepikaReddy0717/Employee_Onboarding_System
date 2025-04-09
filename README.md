@@ -1,6 +1,6 @@
 # 🧠 Employee Training and Onboarding System
 
-A Django-based web application created during the **23CS05EF - Python Full Stack Development with Django (Learnathon)**.
+A Django-based web application created during the **23CS05EF - Python Full Stack Development with Django**.
 
 This system is designed to streamline employee training, assessments, and progress tracking for HR managers and corporate teams.
 
