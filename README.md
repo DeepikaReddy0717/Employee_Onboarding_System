@@ -98,3 +98,15 @@ python manage.py runserver
 # Open in browser
 # Visit: http://127.0.0.1:8000/
 
+---
+
+## 🙏 Acknowledgements
+
+This project was developed as part of the **23CS05EF - Python Full Stack Development with Django (Learnathon)**.
+
+Special thanks to:
+
+- The course mentors and instructors for guidance and support  
+- Django and Python communities for open-source documentation  
+- GitHub for providing the platform to showcase this project  
+
