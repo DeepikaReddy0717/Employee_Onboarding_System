@@ -80,8 +80,8 @@ This project was developed collaboratively as part of the **23CS05EF - Python Fu
 We would like to thank:
 
 - 💻 Our amazing **team members** for their dedication, teamwork, and contributions across all modules  
-- 📚 Various **online communities, tutorials, and documentation** that provided guidance throughout the development  
-- 👨‍🏫 The course instructors and mentors for their constant support and encouragement  
+- 📚 Various **online communities, tutorials, and documentation** like w3 schools,tutorial point that provided guidance throughout the development  
+- 👨‍🏫 The course instructors and mentor Dr.Deepak sir  for their constant support and encouragement  
 - 🌐 Open-source tools and frameworks that made this project possible 
 
 ## 📌 How to Run the Project Locally
